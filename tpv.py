@@ -74,7 +74,7 @@ def distortion(xi, eta, head):
 	# Apply correction (source: http://iraf.noao.edu/projects/ccdmosaic/tpv.html)
 	r = np.sqrt(xi**2 + eta**2)
 	
-	xi = (pv1[0] + pv1[1] * xi + pv1[2] * eta + pv1[3] * r + 
+	xiprime = (pv1[0] + pv1[1] * xi + pv1[2] * eta + pv1[3] * r + 
 	pv1[4]* xi**2 + pv1[5] * xi * eta + pv1[6] * eta**2 + 
 	pv1[7] * xi**3 + pv1[8] * xi**2 * eta + pv1[9] * xi * eta**2 + pv1[10] * eta**3 + pv1[11] * r**3 + 
 	pv1[12] * xi**4 + pv1[13] * xi**3 * eta + pv1[14] * xi**2 * eta**2 + pv1[15] * xi * eta**3 + pv1[16] * eta**4 + 
@@ -85,7 +85,7 @@ def distortion(xi, eta, head):
 	pv1[31] * xi**7 + pv1[32] * xi**6 * eta + pv1[33] * xi**5 * eta**2 + pv1[34] * xi**4 * eta**3 + 
 	pv1[35] * xi**3 * eta**4 + pv1[36] * xi**2 * eta**5 + pv1[37] * xi * eta**6 + pv1[38] * eta**7 + pv1[39] * r**7)
 
-	eta = (pv2[0] + pv2[1] * eta + pv2[2] * xi + pv2[3] * r + 
+	etaprime = (pv2[0] + pv2[1] * eta + pv2[2] * xi + pv2[3] * r + 
 	pv2[4] * eta**2 + pv2[5] * eta * xi + pv2[6] * xi**2 + 
 	pv2[7] * eta**3 + pv2[8] * eta**2 * xi + pv2[9] * eta * xi**2 + pv2[10] * xi**3 + pv2[11] * r**3 + 
 	pv2[12] * eta**4 + pv2[13] * eta**3 * xi + pv2[14] * eta**2 * xi**2 + pv2[15] * eta * xi**3 + pv2[16] * xi**4 + 
@@ -96,4 +96,4 @@ def distortion(xi, eta, head):
 	pv2[31] * eta**7 + pv2[32] * eta**6 * xi + pv2[33] * eta**5 * xi**2 + pv2[34] * eta**4 * xi**3 + 
 	pv2[35] * eta**3 * xi**4 + pv2[36] * eta**2 * xi**5 + pv2[37] * eta * xi**6 + pv2[38] * xi**7 + pv2[39] * r**7)
 
-	return (xi, eta)
+	return (xiprime, etaprime)
